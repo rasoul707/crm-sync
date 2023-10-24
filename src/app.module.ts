@@ -12,24 +12,24 @@ import { SellersSyncCommand } from './commands/sellersSync.command';
   imports: [
     ConfigModule.forRoot(),
     HttpModule,
-    // SoapModule.forRootAsync(
-    //   {
-    //     clientName: 'MY_SOAP_CLIENT',
-    //     imports: [ConfigModule],
-    //     inject: [ConfigService],
-    //     useFactory: async (
-    //       configService: ConfigService,
-    //     ): Promise<SoapModuleOptions> => ({
-    //       clientName: 'MY_SOAP_CLIENT',
-    //       uri: "http://crm-rahsaz.ir/Services/API/IPerson.svc?wsdl",
-    //       auth: {
-    //         type: 'basic',
-    //         username: configService.get('CRM_USERNAME') || "",
-    //         password: configService.get('CRM_PASSWORD') || "",
-    //       },
-    //     }),        
-    //   },
-    // ),
+    SoapModule.forRootAsync(
+      {
+        clientName: 'CRM_CLIENT',
+        imports: [ConfigModule],
+        inject: [ConfigService],
+        useFactory: async (
+          configService: ConfigService,
+        ): Promise<SoapModuleOptions> => ({
+          clientName: 'CRM_CLIENT',
+          uri: "http://192.168.15.13/Services/API/IPerson.svc?wsdl",
+          auth: {
+            type: 'basic',
+            username: configService.get('CRM_USERNAME') || "",
+            password: configService.get('CRM_PASSWORD') || "",
+          },
+        }),        
+      },
+    ),
     CommandModule
   ],
   controllers: [AppController],

@@ -10,7 +10,7 @@ export class AppService {
 
   constructor(
     private readonly httpService: HttpService,
-    // @Inject('MY_SOAP_CLIENT') private readonly crmSoap: Client
+    @Inject('CRM_CLIENT') private readonly crmSoap: Client
     ) {}
 
 
@@ -76,7 +76,7 @@ export class AppService {
       password: process.env.CRM_PASSWORD,
       person,
     }
-    // return await this.crmSoap.SavePerson(params);
+    return await this.crmSoap.SavePerson(params);
   }
 
 }
