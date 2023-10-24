@@ -23,7 +23,7 @@ export class BuyersSyncCommand {
       IdentityType: "حقیقی",
       CreateDate: new Date(),
       ModifyDate: new Date(),
-      Categories: []
+      Categories: [{Id:"PersonCustomerAudienceCRM"}]
     })
 
     // do {
